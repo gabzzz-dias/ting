@@ -10,7 +10,7 @@ def search(word, arr):
 def exists_word(word, instance):
     result = []
 
-    for i in instance._data:
+    for i in instance.data:
         file_lines = search(word, i['linhas_do_arquivo'])
 
         if len(file_lines):

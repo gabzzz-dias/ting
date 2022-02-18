@@ -1,10 +1,10 @@
 def search(word, arr):
-    result = []
+    res = []
     for i, j in enumerate(arr):
         if word in j:
-            result.append({'linha': i + 1})
+            res.append({'linha': i + 1})
 
-    return result
+    return res
 
 
 def exists_word(word, instance):

@@ -3,21 +3,26 @@ from ting_file_management.file_management import txt_importer
 import sys
 
 
-def process(path_file, instance):
-    file = txt_importer(path_file)
-    result = {
-        "nome_do_arquivo": path_file,
-        "qtd_linhas": len(file),
-        "linhas_do_arquivo": file
-    }
-
+def search(path_file, instance):
     if instance.__len__():
         for i in instance._data:
-            repeated = i['nome_do_arquivo'] == path_file
-            if repeated is True:
-                return
+            return i['nome_do_arquivo'] == path_file
+    else:
+        return False
 
-    instance.enqueue(result)
+
+def process(path_file, instance):
+    process_file = txt_importer(path_file)
+    result = {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(process_file),
+        "linhas_do_arquivo": process_file
+    }
+    repeated = search(path_file, instance)
+
+    if repeated is False:
+        instance.enqueue(result)
+
     sys.stdout.write(f'{result}\n')
 
 
@@ -30,7 +35,6 @@ def file_metadata(instance, position):
 
 
 queue = Queue()
-process('statics/arquivo_teste.txt', queue)
 process('statics/arquivo_teste.txt', queue)
 process('statics/arquivo_teste.txt', queue)
 

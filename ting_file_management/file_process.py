@@ -26,3 +26,8 @@ def remove(instance):
 
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
+
+queue = Queue()
+process('statics/arquivo_teste.txt', queue)
+
+remove(queue)

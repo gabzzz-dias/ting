@@ -31,5 +31,6 @@ def file_metadata(instance, position):
 queue = Queue()
 process('statics/arquivo_teste.txt', queue)
 process('statics/arquivo_teste.txt', queue)
+process('statics/arquivo_teste.txt', queue)
 
 remove(queue)

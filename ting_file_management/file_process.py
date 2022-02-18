@@ -26,5 +26,10 @@ def remove(instance):
         sys.stdout.write('Não há elementos\n')
 
 
-def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+def file_metadata(instance, p):
+    try:
+        result = instance.search(p)
+    except IndexError:
+        sys.stderr.write("Posição inválida\n")
+    else:
+        sys.stdout.write(str(result))

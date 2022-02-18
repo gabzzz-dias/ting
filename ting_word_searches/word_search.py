@@ -7,6 +7,16 @@ def search(word, arr):
     return res
 
 
+    def search_cont(word, arr):
+        res = []
+        for i, j in enumerate(arr):
+            x = re.findall(word, j, re.IGNORECASE)
+            if len(x):
+                res.append({'linha': i + 1, "conteudo": j})
+
+        return res
+
+
 def exists_word(word, instance):
     result = []
 
@@ -24,4 +34,14 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    arr = []
+    for i in instance.data:
+        file_lines = search_cont(word, i['linhas_do_arquivo'])
+        if len(file_lines):
+            arr.append({
+                'palavra': word,
+                'arquivo': i['nome_do_arquivo'],
+                'ocorrencias': file_lines
+            })
+
+    return arr

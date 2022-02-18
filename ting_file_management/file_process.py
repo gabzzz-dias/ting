@@ -4,18 +4,18 @@ import sys
 
 
 def process(path_file, instance):
-    if instance.__len__():
-        for i in instance._data:
-            repeated = i['nome_do_arquivo'] == path_file
-            if repeated is True:
-                return
-
     file = txt_importer(path_file)
     result = {
         "nome_do_arquivo": path_file,
         "qtd_linhas": len(file),
         "linhas_do_arquivo": file
     }
+
+    if instance.__len__():
+        for i in instance._data:
+            repeated = i['nome_do_arquivo'] == path_file
+            if repeated is True:
+                return
 
     instance.enqueue(result)
     sys.stdout.write(f'{result}\n')

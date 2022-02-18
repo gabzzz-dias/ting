@@ -1,20 +1,22 @@
+import re
+
+
 def search(word, arr):
     res = []
     for i, j in enumerate(arr):
         if word in j:
             res.append({'linha': i + 1})
-
     return res
 
 
-    def search_cont(word, arr):
-        res = []
-        for i, j in enumerate(arr):
-            x = re.findall(word, j, re.IGNORECASE)
-            if len(x):
-                res.append({'linha': i + 1, "conteudo": j})
+def search_cont(word, arr):
+    res = []
+    for i, j in enumerate(arr):
+        x = re.findall(word, j, re.IGNORECASE)
+        if len(x):
+            res.append({'linha': i + 1, "conteudo": j})
 
-        return res
+    return res
 
 
 def exists_word(word, instance):
@@ -45,3 +47,7 @@ def search_by_word(word, instance):
             })
 
     return arr
+
+# Agradecimentos especiais à Letícia Galvão por
+# ter me ajudado muito nos últimos requisitos! Valeu pela força, Lê!
+# PR Letícia: https://github.com/tryber/sd-010-b-project-ting/pull/34

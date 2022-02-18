@@ -14,7 +14,7 @@ def process(path_file, instance):
     if instance.__len__():
         for i in instance._data:
             repeated = i['nome_do_arquivo'] == path_file
-            if not repeated:
+            if repeated is False:
                 instance.enqueue(result)
 
     sys.stdout.write(f'{result}\n')
